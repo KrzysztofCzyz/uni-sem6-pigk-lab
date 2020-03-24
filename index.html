@@ -6,12 +6,17 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link href="static/style.css" rel="stylesheet" type="text/css" />
-<style type="text/css">
-</style>
+	<link rel="stylesheet" href="static/scripts/jq-ui/jquery-ui.min.css">
+	<link rel="stylesheet" href="static/scripts/jq-ui/jquery-ui.structure.min.css">
+	<link rel="stylesheet" href="static/scripts/jq-ui/jquery-ui.theme.min.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body>
-    <div class="container">
+
+    <div class="container-fluid">
                 <div class="card bg-light text-white">
                     <img src="static/images/piplok.jpg" class="card-img" alt="fgt">
                     <div class="card-img-overlay">
@@ -62,14 +67,103 @@
 									<a href="#" class="list-group-item list-group-item-action">Lorem 3</a>
 								</div>
 						</div>
+<!--						MAIN CONTENT-->
+
+
 						<div class="col-4">
 								<div class="container">
 									<p class="text-center">
 										Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae ea quisquam explicabo ipsum accusantium. Nisi aliquam rerum accusamus sequi facere, sint officia exercitationem nostrum ratione amet, repellat culpa, eum accusantium?
 										Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime labore fugit ipsum non mollitia nobis perferendis vitae reiciendis, rerum modi distinctio dignissimos magni, vel impedit eum, consectetur qui eligendi quae!
 									</p>
+									<div id="accordion">
+										<h3>First header</h3>
+										<div>First content panel</div>
+										<h3>Second header</h3>
+										<div>Second content panel</div>
+									</div>
+
+									<div id="tabs">
+										<ul>
+											<li><a href="#tabs-1">Tab 1 - table</a></li>
+											<li><a href="#tabs-2">Tab 2 - car</a></li>
+											<li><a href="#tabs-3">Tab 3 - form</a></li>
+										</ul>
+										<div id="tabs-1">
+											<table id="tabelka-lab2" class="table table-striped table-bordered ">
+												<thead class="thead-dark">
+												<tr>
+													<th scope="col">#</th>
+													<th scope="col">First</th>
+													<th scope="col">Last</th>
+												</tr>
+												</thead>
+												<tbody>
+												<tr>
+													<th scope="row">1</th>
+													<td>Mark</td>
+													<td>Otto</td>
+												</tr>
+												<tr>
+													<th scope="row">2</th>
+													<td>Jacob</td>
+													<td>Thornton</td>
+												</tr>
+												<tr>
+													<th scope="row">3</th>
+													<td>Larry</td>
+													<td>the Bird</td>
+												</tr>
+												</tbody>
+											</table>
+
+											<form>
+												<label for="Col1" class="col-sm-2 col-form-label">Number</label>
+												<input class="form-control form-control-sm" id="Col1" type="text" placeholder="Number">
+												<label for="Col2" class="col-sm-2 col-form-label">Name</label>
+												<input class="form-control form-control-sm" id="Col2" type="text" placeholder="Name">
+												<label for="Col3" class="col-sm-2 col-form-label">Surname</label>
+												<input class="form-control form-control-sm" id="Col3" type="text" placeholder="Surname">
+												<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Save</button>
+											</form>
+										</div>
+
+										<div id="tabs-2">
+											<div id="control-group">
+												<input id="tags">
+												<br>
+												<label for="datepicker" class="col-sm-2 col-form-label">1st date</label>
+												<input type="text" class="col-sm-2 col-form-label" id="datepicker">
+												<br>
+												<label for="datepicker2" class="col-sm-2 col-form-label">2nd date</label>
+												<input type="text" class="col-sm-2 col-form-label" id="datepicker2">
+											</div>
+
+										</div>
+										<div id="tabs-3">
+
+											<form action="">
+												<label for="selection" class="col-sm-2 col-form-label">Select</label>
+												<select name="speed" id="selection">
+													<option>Uno</option>
+													<option>Dos</option>
+													<option>Tres</option>
+												</select>
+												<br>
+												<div id="slider"></div>
+												<br>
+												<label for="spinner" class="col-sm-2 col-form-label">Spinner</label>
+												<input id="spinner" name="somename" title="Some tooltip">
+												<button id="but2" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">Wyswietl</button>
+
+											</form>
+										</div>
+									</div>
+
+
 								</div>
 						</div>
+
 						<div class="col-4">
 							<div class="card" style="width: 18rem;">
 								<img class="card-img-top" src="static/images/piplok.jpg" alt="Card image cap" style="height: 15vh;">
@@ -81,15 +175,59 @@
 							</div>
 						</div>
 					</div>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		<footer class="navbar navbar-expand-lg navbar-light bg-light">
 					<a class="nav-item nav-link" href="#">Lorem 1</a>
 					<a class="nav-item nav-link" href="#">Lorem 2</a>
-		</nav>
+		</footer>
 	</div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Save data?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+					<button type="button" id="zapisz-dane" class="btn btn-primary" data-dismiss="modal">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel2">Looks alright?</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="lab2-modal2" class="modal-body">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<!--	<script src="static/scripts/jq-ui/jquery-ui.min.js"></script>-->
+	<script type="text/javascript" src="static/scripts/main.js"></script>
+
+
 </body>
 
 </html>
