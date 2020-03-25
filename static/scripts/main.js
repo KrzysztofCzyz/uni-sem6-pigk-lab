@@ -18,21 +18,41 @@ var availableTags = [
 ];
 
 function dodajdane() {
-    text = "<tr>" +
+    text = "<tr class='ui-helper-hidden'>" +
         "<th scope=\"row\">" + $( "#Col1" ).val() + "</th>" +
         "<td>" + $( "#Col2" ).val() + "</td>" +
         "<td>" + $( "#Col3" ).val() + "</td>" +
-        "</tr>"
-    $( "#tabelka-lab2 tbody" ).append(text)
+        "</tr>";
+
+    $( "#tabelka-lab2 tbody" ).append(text);
+    $( "#tabelka-lab2 tbody tr:last" ).fadeIn(300);
 }
 
 function sprawdz() {
+    cl = "btn-outline-danger"
+    $( "#datepicker,#datepicker2" ).removeClass(cl);
     date1 = $( "#datepicker" ).datepicker( "getDate" );
     date2 = $( "#datepicker2" ).datepicker( "getDate" );
     if (date1 != null && date2 != null)
     if (date1 <= date2){
-        alert("Zle wpisales/as")
+        $( "#datepicker,#datepicker2" ).addClass(cl);
     }
+}
+
+function l3FunInOut() {
+    $(this).toggleClass("font-weight-bold").toggleClass("table-active",50,"easeOutBounce")
+}
+
+function l3usunWiersz() {
+    $( "#tabelka-lab2 tbody tr:last" ).fadeOut(1000);
+}
+
+function stripes() {
+    $("#tabelka-lab2 tbody tr").removeClass("bg-success");
+    if ($("#tabela-lab2-checkbox").is(":checked")){
+        $("#tabelka-lab2 tbody tr:odd").addClass("bg-success")
+    }
+    else $("#tabelka-lab2 tbody tr:even").addClass("bg-success");
 }
 
 function dodajtekst() {
@@ -49,8 +69,24 @@ function dodajtekst() {
     $("#lab2-modal2").html(text);
 }
 
-$( "#accordion" ).accordion();
-$( "#tabs" ).tabs();
+// lepiej byloby randomizowac hexem tagi
+function addTab() {
+
+    tname = $( "#tab-name").val();
+    tcontent = "<div id=\""+tname+"\">" + $( "#tab-content").val() + "<div/>";
+
+    $("#tabs ul").append("<li><a href=\"#"+tname+"\">" + tname + "</a></li>");
+    $("#tabs").append(tcontent);
+    $( "#tabs" ).tabs( "refresh" );
+}
+
+
+$( "#accordion" ).accordion({
+    animate: 500
+});
+$( "#tabs" ).tabs({
+    hide: { effect: "slide", duration: 100 }
+});
 $( "#zapisz-dane" ).click(dodajdane);
 
 
@@ -84,3 +120,8 @@ $.extend( $.ui.dialog.prototype.options.classes, {
 });
 
 $( "#but2").click(dodajtekst);
+$( "#tab-add" ).click(addTab);
+$( "#tabela-lab2-checkbox").click(stripes);
+stripes();
+$( "#tabelka-lab2 tbody tr" ).hover(l3FunInOut,l3FunInOut);
+l3usunWiersz();
