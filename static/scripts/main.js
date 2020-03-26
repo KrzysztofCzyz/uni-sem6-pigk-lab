@@ -124,4 +124,22 @@ $( "#tab-add" ).click(addTab);
 $( "#tabela-lab2-checkbox").click(stripes);
 stripes();
 $( "#tabelka-lab2 tbody tr" ).hover(l3FunInOut,l3FunInOut);
-l3usunWiersz();
+// l3usunWiersz();
+// ======LAB 4======
+function l4CheckboxOnClick(){
+    if ($("#l4-checkbox").is(":checked")){
+        $( "#l4-sort-l, #l4-sort-r, #l4-main-sortable" ).sortable("enable");
+    }
+    else {
+        $( "#l4-sort-l, #l4-sort-r, #l4-main-sortable" ).sortable("disable");
+    }
+}
+$( "#l4-checkbox" ).click(l4CheckboxOnClick);
+$( "#l4-sort-l" ).sortable({
+    connectWith: "#l4-sort-r"
+});
+$( "#l4-sort-r" ).sortable({
+    connectWith: "#l4-sort-l"
+});
+$( "#l4-main-sortable" ).sortable();
+$( "#l4-sort-l, #l4-sort-r, #l4-main-sortable" ).sortable("disable");
