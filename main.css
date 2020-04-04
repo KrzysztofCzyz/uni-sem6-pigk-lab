@@ -1,0 +1,115 @@
+.card-pic{
+    width: 250px;
+    height: 200px;
+}
+.card{
+    margin: 0 10px;
+}
+
+body{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.card:hover{
+
+}
+.animacja-out{
+    animation-name: odsrodka;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.animacja-in{
+    animation-name: dosrodka;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#wybraniec{
+
+    animation-name: dosrodka;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+/*@keyframes dosrodka {*/
+/*    from {width: 250px;*/
+/*        height: 200px;*/
+/*        position: absolute;*/
+/*        top: 5vh;*/
+/*        left: 5vw;*/
+/*        }*/
+/*    to {width: 90vw;*/
+/*        height: 90vh;*/
+/*        position: absolute;*/
+/*        top: 5vh;*/
+/*        left: 5vw;*/
+/*        }*/
+/*}*/
+
+@keyframes dosrodka {
+    from {
+        position: absolute;
+        top: 30vh;
+        left: 30vw;
+    }
+    to {
+
+        width: 90vw;
+        height: 90vh;
+        position: absolute;
+        top: 5vh;
+        left: 5vw;
+    }
+}
+
+@keyframes odsrodka {
+    0% {
+        width: 90vw;
+        height: 90vh;
+        position: absolute;
+        top: 5vh;
+        left: 5vw;}
+    50% {
+        position: absolute;
+        top: 30vh;
+        left: 30vw;
+    }
+    90% { position:static; }
+    100% {
+        width: 250px;
+        height: 200px;
+        }
+}
+
+@keyframes zlozonaanimacja {
+    0%{background-color: skyblue}
+    20%{background-color: red}
+    40%{background-color: blue}
+    60%{background-color: black}
+    80%{background-color: white}
+    100%{background-color: skyblue}
+}
+
+.red-card{
+    width: 100px;
+    height: 100px;
+    animation-name: zlozonaanimacja;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+}
+
+
+/*@keyframes odsrodka {*/
+/*    from {*/
+/*        width: 90vw;*/
+/*        height: 90vh;*/
+/*        position: static;*/
+/*        top: 5vh;*/
+/*        left: 5vw;}*/
+/*    to {*/
+/*        width: 250px;*/
+/*        height: 200px;*/
+/*        position: static}*/
+/*}*/
+
