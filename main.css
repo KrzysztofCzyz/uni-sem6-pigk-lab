@@ -1,4 +1,4 @@
-.card-pic{
+.card-pic, .card-dd{
     width: 250px;
     height: 200px;
 }
@@ -10,9 +10,8 @@ body{
     display: flex;
     flex-flow: row wrap;
 }
-
-.card:hover{
-
+.easy-hover:hover{
+    transform: rotate(30deg) scale(2.0) skew(15deg,15deg) translate(20px,20px);
 }
 .animacja-out{
     animation-name: odsrodka;
@@ -24,12 +23,54 @@ body{
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
-
-#wybraniec{
-
-    animation-name: dosrodka;
-    animation-duration: 1s;
+.simple-animations{
+    width: 150px;
+    height: 150px;
+    animation-duration: 3s;
     animation-fill-mode: forwards;
+    animation-name: prostaanimacja;
+}
+
+.simple-animations-1{
+    animation-timing-function: steps(5,end);
+}
+.simple-animations-2{
+    animation-timing-function: ease-in;
+}
+.simple-animations-3{
+    animation-timing-function: ease-out;
+}
+.simple-animations-4{
+    animation-timing-function: cubic-bezier(10,10,100,100);
+}
+.simple-animations-5{
+    animation-timing-function: ease;
+}
+
+.wybrany{
+    border: 1px solid black;
+}
+
+.card-double{
+    animation-name: dwaiks;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.ani-hover:hover{
+    animation-name: hov;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes prostaanimacja {
+    from{background-color: black;}
+    to{background-color: red;}
+}
+
+@keyframes hov {
+    from{}
+    to{transform: scale(1.2,1.2) rotate(3deg)}
 }
 
 /*@keyframes dosrodka {*/
@@ -45,6 +86,32 @@ body{
 /*        top: 5vh;*/
 /*        left: 5vw;*/
 /*        }*/
+/*}*/
+
+@keyframes dwaiks {
+
+    from {
+        position: absolute;
+        top: 30vh;
+        left: 30vw;
+    }
+    to {
+        transform: rotate(720deg);
+        width: 90vw;
+        height: 90vh;
+        position: absolute;
+        top: 5vh;
+        left: 5vw;
+    }
+}
+
+/*@keyframes dwaiks {*/
+
+/*    from {*/
+/*    }*/
+/*    to {*/
+/*        transform: rotate(720deg);*/
+/*    }*/
 /*}*/
 
 @keyframes dosrodka {
@@ -75,7 +142,7 @@ body{
         top: 30vh;
         left: 30vw;
     }
-    90% { position:static; }
+    95% { position:static; }
     100% {
         width: 250px;
         height: 200px;
