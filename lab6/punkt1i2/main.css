@@ -1,0 +1,107 @@
+.card-pic, .card-dd{
+    width: 250px;
+    height: 200px;
+}
+.card{
+    margin: 0 10px;
+}
+
+body{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.animacja-in{
+    width: 90vw;
+    height: 90vh;
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    -webkit-animation: slide-rotate-hor-top 1s ease-in-out reverse forwards;
+            animation: slide-rotate-hor-top 1s ease-in-out reverse forwards;
+}
+
+.animacja-out{
+    width: 90vw;
+    height: 90vh;
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+	-webkit-animation: slide-rotate-hor-top2 1s ease-in-out forwards;
+	        animation: slide-rotate-hor-top2 1s ease-in-out forwards;
+}
+  
+
+ @-webkit-keyframes slide-rotate-hor-top {
+    0% {
+      -webkit-transform: translateY(0) rotateX(0deg);
+              transform: translateY(0) rotateX(0deg);
+    }
+    100% {
+      -webkit-transform: translateY(-150px) rotateX(-90deg);
+              transform: translateY(-150px) rotateX(-90deg);
+    }
+  }
+  @keyframes slide-rotate-hor-top {
+    0% {
+      -webkit-transform: translateY(0) rotateX(0deg);
+              transform: translateY(0) rotateX(0deg);
+
+    }
+    100% {
+      -webkit-transform: translateY(-150px) rotateX(-90deg);
+              transform: translateY(-150px) rotateX(-90deg);
+
+    }
+  }
+
+  @-webkit-keyframes slide-rotate-hor-top2 {
+    0% {
+      -webkit-transform: translateY(0) rotateX(0deg);
+              transform: translateY(0) rotateX(0deg);
+    }
+    100% {
+      -webkit-transform: translateY(-150px) rotateX(-90deg);
+              transform: translateY(-150px) rotateX(-90deg);
+    }
+  }
+  @keyframes slide-rotate-hor-top2 {
+    0% {
+      -webkit-transform: translateY(0) rotateX(0deg);
+              transform: translateY(0) rotateX(0deg);
+
+    }
+    100% {
+      -webkit-transform: translateY(-150px) rotateX(-90deg);
+              transform: translateY(-150px) rotateX(-90deg);
+
+    }
+  }
+
+
+.ani-hover:hover {
+	-webkit-animation: rotate-center 0.1s ease-in-out forwards;
+	        animation: rotate-center 0.1s ease-in-out forwards;
+}
+
+ @-webkit-keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate-center {
+    0% {
+      -webkit-transform: rotate(0);
+              transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+
