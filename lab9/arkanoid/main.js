@@ -7,6 +7,8 @@ var area;
 var plate;
 var stop = false;
 var drawGameOver = false;
+var score;
+var levels;
 window.onload = function () {
     canvas = document.getElementById("AnimationCanvas");
     context = canvas.getContext("2d");
@@ -47,7 +49,7 @@ window.onload = function () {
         ball = { x: 20, y: 20, r: 10, vx: 100, vy: -150 };
         //vx oraz vx – to oczywiście początkowa prędkość piłki
         area = { x: 0, y: 0, width: 500, height: 500 };
-
+        score = 0;
         plate = {
             x: area.width / 2.0,
             y: area.height - 20,
@@ -58,6 +60,53 @@ window.onload = function () {
             fillStyle: "green",
             strokeStyle: "black"
         };
+        levels = Array();
+        brick = {
+            width: 48, height: 18,
+            fillStyles: ["green", "blue", "yellow", "red"],
+            strokeStyle: "black"
+        };
+        bricks = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 3, 3, 0, 0, 0, 0, 3, 3, 0],
+        [0, 0, 0, 3, 3, 3, 3, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0, 1, 1, 0, 0],
+        [0, 0, 2, 2, 2, 2, 2, 2, 0, 0],
+        [0, 3, 2, 3, 2, 3, 2, 1, 3, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+        bricks2 = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 3, 3, 0, 0, 0, 0, 3, 3, 0],
+        [0, 0, 0, 3, 3, 3, 3, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0, 1, 1, 0, 0],
+        [0, 0, 2, 2, 2, 2, 2, 2, 0, 0],
+        [0, 3, 2, 3, 2, 3, 2, 1, 3, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+        bricks3 = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 3, 3, 0, 0, 0, 0, 3, 3, 0],
+        [0, 0, 0, 3, 3, 3, 3, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0, 1, 1, 0, 0],
+        [0, 0, 2, 2, 2, 2, 2, 2, 0, 0],
+        [0, 3, 2, 3, 2, 3, 2, 1, 3, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+        bricks4 = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 3, 3, 0, 0, 0, 0, 3, 3, 0],
+        [0, 0, 0, 3, 3, 3, 3, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0, 0, 1, 1, 0, 0],
+        [0, 0, 2, 2, 2, 2, 2, 2, 0, 0],
+        [0, 3, 2, 3, 2, 3, 2, 1, 3, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+        levels.push(bricks2,bricks3,bricks4);
 
         window.requestAnimationFrame(drawAnimation);
     }
@@ -94,21 +143,37 @@ window.onload = function () {
         }
         ball.y += dy;
 
+
+
         //Wyznaczenie przesunięcia paletki 
         var pdx = plate.vx * time_interval / 1000;
-        console.log(pdx);
         //Poruszanie paletki (sprawdzenie warunków granicznych) 
-        if (plate.x + pdx <= area.x &&
-             plate.x + pdx + plate.width >= area.width) {
+        if (plate.x + pdx >= area.x &&
+            plate.x + pdx + plate.width <= area.width) {
             // To poruszaj 
             plate.x += pdx;
-            console.log("ruszam sie");
         } else {
             plate.vx = 0;
             // zatrzymanie paletki 
         }
         //……
+        var nextLevel = true;
+        for (var i = 0; i < 10; i++) //po szeroko±ci okna 
+        {
+            for (var j = 0; j < 10; j++) //po wysoko±ci 
+            {
+                if (bricks[j][i] > 0) {
+                    nextLevel = false;
+                    break;
+                }
+            }
+            if(!nextLevel)
+            break;
+        }
 
+        if(nextLevel){
+            bricks = shift(levels);
+        }
         //KOLIZJA PALETKA PILKA 
         if (ball.y + ball.r >= plate.y)
         //odbicie piłki od paletki 
@@ -125,6 +190,26 @@ window.onload = function () {
             }
         }
 
+        //KOLIZJA PALETKA KOSTKA
+        for (var i = 0; i < 10; i++) //po szeroko±ci okna 
+        {
+            for (var j = 0; j < 10; j++) //po wysoko±ci 
+            {
+                if (bricks[j][i] > 0) {
+                    if ((ball.y + ball.r >= j * (brick.height + 2))
+                        && (ball.y + ball.r <= j * (brick.height + 2) + brick.height)) {
+                        if (ball.x >= i * (brick.width + 2)
+                            && ball.x <= i * (brick.width + 2) + brick.width) {
+                            ball.vy = -ball.vy;
+                            ball.vx = -ball.vx;
+                            bricks[j][i]--;
+                            score++;
+                        }
+                    }
+                }
+            }
+        }
+
 
         // 4. Rysowanie obiektów:
         // 4.1 Zapamiętanie stanu płótna 
@@ -136,10 +221,33 @@ window.onload = function () {
             context.textAlign = "center";
             context.textBaseline = "middle";
             context.fillText("Game over", area.width / 2.0, area.height / 2.0);
+            context.fillText("Score: " + score, area.width / 2.0, area.height / 3.0);
             context.restore();
         } else {
             context.save();
 
+            //RYSUJ SCORE
+            context.fillStyle = "black";
+            context.font = "15pt Calibri";
+            context.textAlign = "center";
+            context.textBaseline = "middle";
+            context.fillText("Score: " + score,area.width / 2.0,10);
+
+            for (var i = 0; i < 10; i++) //po szeroko±ci okna 
+            {
+                for (var j = 0; j < 10; j++) //po wysoko±ci 
+                {
+                    if (bricks[j][i] > 0) {
+                        context.beginPath();
+                        context.fillStyle = brick.fillStyles[bricks[j][i]];
+                        context.fillRect(i * (brick.width + 2),
+                            j * (brick.height + 2), brick.width, brick.height);
+                        context.strokeRect(i * (brick.width + 2),
+                            j * (brick.height + 2), brick.width, brick.height);
+                        context.closePath();
+                    }
+                }
+            }
 
             context.beginPath();
             context.fillStyle = "blue";
